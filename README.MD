@@ -47,7 +47,7 @@
    2. Ideally it should be limited only to the component changing value. Worst case scenario, the parent component.
    3. If any component rooted at a different feature is getting rendered because of the change, there's something seriously wrong.
 
-4. Redux conventions
+4. Redux conventions [Redux Style Guide](https://redux.js.org/style-guide/)
    1. Have a strong base on redux architecture.
    2. Reducer should not have any side effects, just change it's own slice and leave it there.
    3. Ask this question everytime you make a reducer "Is it taking the action and **ONLY** modifying it's own slice **ENTIRELY** based on the action?". If the answer is no, then the reducer needs to be changed.
@@ -62,11 +62,11 @@
    5. Instead create custom hooks and use them. Hooks can be for making API calls, running some function (sorting, RMS checks etc...)
    6. css should be separated out from react always.
 
-6. Build a strong base on react, understand all the hooks which react provides.
+6. Build a strong base on react, understand all the hooks which react provides [React Hooks](https://react.dev/reference/react/hooks)
    1. More specifically dive deep into the less used hooks like useRef.
    2. These hooks have a very small set of use cases but they give a much better performance than other counterparts. 
 
-7. React conventions
+7. React conventions [AirBnB Guide](https://github.com/airbnb/javascript/tree/master/react)
    1. Variable name should always be a noun
    2. Function name should always be a verb
    3. Component names and their files should always be **PascalCase**
@@ -82,11 +82,12 @@
    5. Thinking about these edge cases will also reduce load on the backend by removing unnecessary API calls.
    6. There will be many non-trivial edge cases which you'll only understand once you understand the feature completely.
 
-9.  A very strong base in javascript is compulsory, understand the use case of each of these and use the best possible option.
+9.  A very strong base in javascript is compulsory, understand the use case of each of these and use the best possible option. [W3 Schools](https://www.w3schools.com/jsref/)
     1.  Arrays, objects, dates
     2.  functions
     3.  loops like while, for and forEach
     4.  async, await
+    5.  Read as much as possible in js, there's always something new in this, always some non-intuitive new behaviour.
 
 10. React components should never be async
     1.  If API calls are needed, always put them inside useEffect or some controlled form.
