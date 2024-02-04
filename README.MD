@@ -28,6 +28,8 @@
     >Ex. If user clicks on place order, the blob should immediately close instead of waiting for a response from backend. This response can be shown as a new notification. 
     
     > Ex. When user tries to add an instrument into watchlist, it should get added immediately and then in case the API call fails, it should revert back.
+   4. Use the feature in the exact flow which user is supposed to take. Then take a few de-tours (like changing pages and triggering the same functionality) to see if it works as expected.
+   5. User should not be able to burst requests to the backend from UI.
 
 
 ## Technical Standards
@@ -36,6 +38,7 @@
 1. Always prioritize memory usage, never create copies inside components.
    1. If at all copies are required, they should be done inside the context of a function which should get immediately destroyed once the function is executed.
    2. Copies inside the redux reducer would be acceptable in case some complex mutation is required.
+   3. In the extreme case that copy is required in the component, make sure to minimize the copy size to "just enough" to work with.
 
 2. Avoid prop drilling as much as possible
    1. If a prop is passing down to more than 1 child, there's something seriously wrong with it.
@@ -53,6 +56,7 @@
    3. Ask this question everytime you make a reducer "Is it taking the action and **ONLY** modifying it's own slice **ENTIRELY** based on the action?". If the answer is no, then the reducer needs to be changed.
    4. If side effects are needed in a different slice or anything extra, create a new reducer in the respective slice or do things from main codebase.
    5. Never interact with the state directly, these interactions should only be done by a reducer, inside a reducer.
+   6. Always check the chrome console for warnings, aim to make it 0 warnings.
 
 5. Follow the single responsibility principle, one function should only have a single job.
    1. In case you think multiple functions can be merged together, first make individual functions and make them work.
@@ -61,6 +65,7 @@
    4. In the context of react, keep logic separated from react components. 
    5. Instead create custom hooks and use them. Hooks can be for making API calls, running some function (sorting, RMS checks etc...)
    6. css should be separated out from react always.
+   7. css should be applied to the feature or main component, this css will automatically apply to every child component.
 
 6. Build a strong base on react, understand all the hooks which react provides [React Hooks](https://react.dev/reference/react/hooks)
    1. More specifically dive deep into the less used hooks like useRef.
@@ -73,6 +78,7 @@
    4. js functions and their files should be named in **camelCase**
    5. If the imports are going out of the second parent folder, use absolute imports instead of relative imports. (Prefer "Features/Orders/Services" over "../../Services")
    6. If there is more than 1 file in a folder, create an index.js in that folder so that the imports turn from **import MarketWatch "Features/Marketwatch/Marketwatch"** to **import {MarketWatch} "Features"**
+   7. Always check the chrome console for warnings, aim to make it 0 warnings.
 
 8. **ALWAYS** check for edge cases when writing code:
    1. Null edge cases. This is the bare minimum, your code should handle all sorts of null cases.
